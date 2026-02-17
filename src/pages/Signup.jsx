@@ -40,7 +40,11 @@ export default function Signup() {
 	};
 
 	return (
-		<div className="font-ubuntu font-bold h-screen bg-gray-900 flex flex-col items-center justify-center">
+		<div
+			className="font-ubuntu font-bold h-screen 
+			bg-[radial-gradient(ellipse_at_bottom,var(--color-gray-700),var(--color-gray-900),black)]  
+			flex flex-col items-center justify-center"
+		>
 			<p className="text-red-400 text-5xl">Signup</p>
 			<br />
 			<br />

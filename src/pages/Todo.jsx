@@ -114,7 +114,11 @@ export default function Todo() {
 	};
 
 	return (
-		<div className="font-ubuntu font-bold h-screen bg-gray-900 flex flex-col items-center justify-center">
+		<div
+			className="font-ubuntu font-bold h-screen 
+			bg-[radial-gradient(ellipse_at_bottom,var(--color-gray-700),var(--color-gray-900),black)] 
+			flex flex-col items-center justify-center"
+		>
 			<span className="h-13 w-13 top-13 left-16 text-xl text-gray-950 bg-amber-400 absolute rounded-4xl flex flex-col items-center justify-center">
 				{username[0]}
 			</span>

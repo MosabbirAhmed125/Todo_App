@@ -31,9 +31,16 @@ export default function Login() {
 		>
 			<div
 				className="flex flex-col items-center bg-transparent 
-				backdrop-blur-2xl border border-gray-400 p-15 rounded-2xl"
+				backdrop-blur-2xl border-2 border-gray-400 p-15 rounded-2xl"
 			>
-				<p className="text-red-400 text-5xl">Login</p>
+				<div className="flex flex-row items-center justify-center">
+					<img
+						src="/favicon.svg"
+						alt="Todo Icon"
+						className="size-15 mx-3 border-2 border-gray-400 rounded-xl"
+					/>
+					<p className="text-red-400 text-5xl">Login</p>
+				</div>
 				<br />
 				<br />
 				<form

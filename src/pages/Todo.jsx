@@ -133,7 +133,14 @@ export default function Todo() {
 				Logout
 			</button>
 			<div className="font-ubuntu font-bold flex flex-col items-center">
-				<p className="text-red-400 text-5xl">Welcome!</p>
+				<div className="flex flex-row items-center justify-center">
+					<img
+						src="/favicon.svg"
+						alt="Todo Icon"
+						className="size-15 mx-3 border-2 border-gray-400 rounded-xl"
+					/>
+					<p className="text-red-400 text-5xl">Welcome!</p>
+				</div>
 				<br />
 				<br />
 				<TodoForm

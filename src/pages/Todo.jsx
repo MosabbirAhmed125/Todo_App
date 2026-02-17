@@ -115,7 +115,7 @@ export default function Todo() {
 
 	return (
 		<div
-			className="font-ubuntu font-bold h-screen 
+			className="font-ubuntu font-bold min-h-screen
 			bg-[radial-gradient(ellipse_at_bottom,var(--color-gray-700),var(--color-gray-900),black)] 
 			flex flex-col items-center justify-center"
 		>

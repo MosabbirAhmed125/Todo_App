@@ -29,15 +29,12 @@ export default function Login() {
 			bg-[radial-gradient(ellipse_at_bottom,var(--color-gray-700),var(--color-gray-900),black)] 
 			flex flex-col items-center justify-center"
 		>
-			<div
-				className="flex flex-col items-center bg-transparent 
-				backdrop-blur-2xl border-2 border-gray-400 p-15 rounded-2xl"
-			>
+			<div className="flex flex-col items-center border-2 border-gray-400 p-15 rounded-2xl">
 				<div className="flex flex-row items-center justify-center">
 					<img
-						src="/favicon.svg"
+						src="/favicon_alt.svg"
 						alt="Todo Icon"
-						className="size-15 mx-3 border-2 border-gray-400 rounded-xl"
+						className="size-13 mx-3"
 					/>
 					<p className="text-red-400 text-5xl">Login</p>
 				</div>

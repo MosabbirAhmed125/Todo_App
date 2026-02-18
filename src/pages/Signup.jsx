@@ -51,9 +51,9 @@ export default function Signup() {
 			>
 				<div className="flex flex-row items-center justify-center">
 					<img
-						src="/favicon.svg"
+						src="/favicon_alt.svg"
 						alt="Todo Icon"
-						className="size-15 mx-3 border-2 border-gray-400 rounded-xl"
+						className="size-13 mx-3"
 					/>
 					<p className="text-red-400 text-5xl">Signup</p>
 				</div>

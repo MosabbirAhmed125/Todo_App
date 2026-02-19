@@ -2,6 +2,7 @@ import "./index.css";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Todo from "./pages/Todo";
+import Admin from "./pages/Admin";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "./lib/supabaseClient";
@@ -43,6 +44,7 @@ function App() {
 				path="/todo"
 				element={session ? <Todo></Todo> : <Navigate to="/" />}
 			/>
+			<Route path="/admin" element={<Admin />} />
 		</Routes>
 	);
 }

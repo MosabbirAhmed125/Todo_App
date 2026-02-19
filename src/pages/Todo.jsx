@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import TodoForm from "../components/TodoForm";
 import TodoList from "../components/TodoList";
+import PracticeTable from "../components/Table";
 import { supabase } from "../lib/supabaseClient";
 import { useNavigate } from "react-router-dom";
 
@@ -132,6 +133,17 @@ export default function Todo() {
 			>
 				Logout
 			</button>
+			{username === "Admin" && (
+				<button
+					onClick={() => {
+						navigate("/admin");
+					}}
+					className="font-bold text-gray-950 text-[20px] bg-amber-400  bg-center rounded-lg p-2 border-transparent transition delay-75 duration-150 ease-in-out hover:scale-110 hover:bg-blue-50 hover:text-amber-400 
+					hover:shadow-amber-400/50 hover:shadow-lg w-38 h-12 cursor-pointer absolute top-47 left-16"
+				>
+					Admin Panel
+				</button>
+			)}
 			<div className="font-ubuntu font-bold flex flex-col items-center">
 				<div className="flex flex-row items-center justify-center">
 					<img

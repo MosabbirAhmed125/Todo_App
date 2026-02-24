@@ -2,11 +2,13 @@ import { useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function Signup() {
 	let [username, setUsername] = useState("");
 	let [email, setEmail] = useState("");
 	let [password, setPassword] = useState("");
+	let [showPassword, setShowPassword] = useState(false);
 	let navigate = useNavigate();
 
 	let handleSignup = async (event) => {
@@ -71,7 +73,7 @@ export default function Signup() {
 							setUsername(event.target.value);
 						}}
 						required
-						className="font-bold border-3 border-red-400 rounded-md h-12 w-full bg-blue-50 text-center transition delay-75 duration-150 ease-in-out focus:scale-110 focus:text-blue-500 focus:outline-none"
+						className="font-bold border-3 border-red-400 rounded-md h-12 w-full bg-blue-50 text-left px-3 transition delay-75 duration-150 ease-in-out focus:text-blue-500 focus:outline-none"
 					/>
 					<br />
 					<input
@@ -81,18 +83,40 @@ export default function Signup() {
 							setEmail(event.target.value);
 						}}
 						required
-						className="font-bold border-3 border-red-400 rounded-md h-12 w-full bg-blue-50 text-center transition delay-75 duration-150 ease-in-out focus:scale-110 focus:text-blue-500 focus:outline-none"
+						className="font-bold border-3 border-red-400 rounded-md h-12 w-full bg-blue-50 text-left px-3 transition delay-75 duration-150 ease-in-out focus:text-blue-500 focus:outline-none"
 					/>
 					<br />
-					<input
-						type="password"
-						placeholder="Enter Password"
-						onChange={(event) => {
-							setPassword(event.target.value);
-						}}
-						required
-						className="font-bold border-3 border-red-400 rounded-md h-12 w-full bg-blue-50 text-center transition delay-75 duration-150 ease-in-out focus:scale-110 focus:text-blue-500 focus:outline-none"
-					/>
+					<div className="relative w-full">
+						<input
+							type={showPassword ? "text" : "password"}
+							placeholder="Enter Password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+							required
+							className="font-bold border-3 border-red-400 rounded-md h-12 w-full bg-blue-50 text-left px-3 transition delay-75 duration-150 ease-in-out focus:text-blue-500 focus:outline-none pr-12"
+						/>
+						<span
+							className="absolute right-11 top-1/2 transform -translate-y-1/2 bg-gray-400"
+							style={{ width: "2px", height: "60%" }}
+						/>
+						<button
+							type="button"
+							onClick={() => setShowPassword(!showPassword)}
+							className="absolute right-3 top-1/2 transform -translate-y-1/2"
+						>
+							{showPassword ? (
+								<EyeOff
+									className="w-6 h-6 text-red-400"
+									strokeWidth={2.5}
+								/>
+							) : (
+								<Eye
+									className="w-6 h-6 text-blue-500"
+									strokeWidth={2.5}
+								/>
+							)}
+						</button>
+					</div>
 					<br />
 					<button
 						className="font-bold text-blue-50 text-[18px] bg-blue-500 bg-center rounded-lg p-2 border-transparent transition delay-75 duration-150 ease-in-out hover:scale-110 hover:bg-blue-50 hover:text-blue-500

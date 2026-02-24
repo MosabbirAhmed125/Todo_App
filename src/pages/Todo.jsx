@@ -5,6 +5,8 @@ import TodoList from "../components/TodoList";
 import PracticeTable from "../components/Table";
 import { supabase } from "../lib/supabaseClient";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { User } from "lucide-react";
 
 export default function Todo() {
 	let [todo, setTodo] = useState([]);
@@ -59,6 +61,7 @@ export default function Todo() {
 
 	let handleLogout = async () => {
 		await supabase.auth.signOut();
+		toast.success("Successfully logged out!");
 		navigate("/");
 	};
 
@@ -77,10 +80,11 @@ export default function Todo() {
 		]);
 
 		if (error) {
-			alert(error.message);
+			toast.error(error.message);
 			console.log(error.message);
 		}
 
+		toast.success("Added new task.");
 		setNewTodo("");
 		fetchTodos();
 	};
@@ -93,10 +97,11 @@ export default function Todo() {
 		let { error } = await supabase.from("todos").delete().eq("id", id);
 
 		if (error) {
-			alert(error.message);
+			toast.error(error.message);
 			console.log(error.message);
 		}
 
+		toast.success("Deleted task.");
 		fetchTodos();
 	};
 
@@ -120,8 +125,8 @@ export default function Todo() {
 			bg-[radial-gradient(ellipse_at_bottom,var(--color-gray-700),var(--color-gray-900),black)] 
 			flex flex-col items-center justify-center"
 		>
-			<span className="h-13 w-13 top-13 left-16 text-xl text-gray-950 bg-amber-400 absolute rounded-4xl flex flex-col items-center justify-center">
-				{username[0]}
+			<span className="h-13 w-13 top-13 left-16 bg-amber-400 absolute rounded-4xl flex flex-col items-center justify-center">
+				<User className="w-7 h-7 text-gray-950" strokeWidth={2.5} />
 			</span>
 			<p className="text-blue-50 text-xl absolute top-16 left-32">
 				{username}

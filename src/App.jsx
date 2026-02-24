@@ -6,6 +6,7 @@ import Admin from "./pages/Admin";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "./lib/supabaseClient";
+import { Toaster } from "react-hot-toast";
 
 function App() {
 	let [session, setSession] = useState(null);
@@ -31,21 +32,28 @@ function App() {
 	if (loading) return <p>Loading...</p>;
 
 	return (
-		<Routes>
-			<Route
-				path="/"
-				element={!session ? <Login></Login> : <Navigate to="/todo" />}
-			/>
-			<Route
-				path="/signup"
-				element={!session ? <Signup></Signup> : <Navigate to="/todo" />}
-			/>
-			<Route
-				path="/todo"
-				element={session ? <Todo></Todo> : <Navigate to="/" />}
-			/>
-			<Route path="/admin" element={<Admin />} />
-		</Routes>
+		<div>
+			<Toaster position="top-center" reverseOrder={false} />
+			<Routes>
+				<Route
+					path="/"
+					element={
+						!session ? <Login></Login> : <Navigate to="/todo" />
+					}
+				/>
+				<Route
+					path="/signup"
+					element={
+						!session ? <Signup></Signup> : <Navigate to="/todo" />
+					}
+				/>
+				<Route
+					path="/todo"
+					element={session ? <Todo></Todo> : <Navigate to="/" />}
+				/>
+				<Route path="/admin" element={<Admin />} />
+			</Routes>
+		</div>
 	);
 }
 

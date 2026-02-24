@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useNavigate } from "react-router-dom";
 import jsPDF from "jspdf";
+import toast from "react-hot-toast";
 import autoTable from "jspdf-autotable";
 import "../fonts/Ubuntu-normal";
 import "../fonts/Ubuntu-bold";
@@ -12,6 +13,7 @@ import {
 	getFilteredRowModel,
 	flexRender,
 } from "@tanstack/react-table";
+import { User } from "lucide-react";
 
 async function fetchTodos() {
 	let { data, error } = await supabase.from("todos").select(`
@@ -42,6 +44,7 @@ export default function Admin() {
 
 	let handleLogout = async () => {
 		await supabase.auth.signOut();
+		toast.success("Successfully logged out!");
 		navigate("/");
 	};
 
@@ -132,14 +135,34 @@ export default function Admin() {
 		doc.save("admin_todos_report.pdf");
 	};
 
+	const handleExportPDF = () => {
+		toast.promise(
+			new Promise((resolve, reject) => {
+				try {
+					setTimeout(() => {
+						exportToPDF();
+						resolve();
+					}, 1000);
+				} catch (error) {
+					reject(error);
+				}
+			}),
+			{
+				loading: "Generating PDF...",
+				success: "PDF Downloaded Successfully!",
+				error: "Failed to Download PDF.",
+			},
+		);
+	};
+
 	return (
 		<div
 			className="font-ubuntu font-bold h-screen 
 			bg-[radial-gradient(ellipse_at_bottom,var(--color-gray-700),var(--color-gray-900),black)] 
 			flex flex-col items-center justify-center"
 		>
-			<span className="h-13 w-13 top-13 left-16 text-xl text-gray-950 bg-amber-400 absolute rounded-4xl flex flex-col items-center justify-center">
-				A
+			<span className="h-13 w-13 top-13 left-16 bg-amber-400 absolute rounded-4xl flex flex-col items-center justify-center">
+				<User className="w-7 h-7 text-gray-950" strokeWidth={2.5} />
 			</span>
 			<p className="text-blue-50 text-xl absolute top-16 left-32">
 				Admin
@@ -174,7 +197,7 @@ export default function Admin() {
 			<br />
 			<br />
 			<button
-				onClick={exportToPDF}
+				onClick={handleExportPDF}
 				className="font-bold text-gray-950 text-[20px] bg-green-500 rounded-lg px-4 py-2 border-transparent transition delay-75 duration-150 ease-in-out hover:scale-110 hover:bg-blue-50 hover:text-green-500
 				hover:shadow-green-500/50 hover:shadow-lg cursor-pointer w-43 h-12 my-2"
 			>

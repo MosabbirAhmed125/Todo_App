@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function Signup() {
 	let [username, setUsername] = useState("");
@@ -18,7 +19,7 @@ export default function Signup() {
 
 		if (authError) {
 			console.error(authError.message);
-			alert(authError.message);
+			toast.error(authError.message);
 		}
 
 		let user_id = authData.user.id;
@@ -32,9 +33,9 @@ export default function Signup() {
 
 		if (profileError) {
 			console.error(profileError.message);
-			alert(profileError.message);
+			toast.error(profileError.message);
 		} else {
-			alert("Account created! Please login.");
+			toast.success("Account created! Please login.");
 			navigate("/");
 		}
 	};

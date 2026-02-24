@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function Login() {
 	let [email, setEmail] = useState("");
@@ -17,8 +18,9 @@ export default function Login() {
 
 		if (error) {
 			console.error(error.message);
-			alert(error.message);
+			toast.error(error.message);
 		} else {
+			toast.success("Login Successful!");
 			navigate("/todo");
 		}
 	};

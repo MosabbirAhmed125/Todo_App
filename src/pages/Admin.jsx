@@ -14,6 +14,7 @@ import {
 	flexRender,
 } from "@tanstack/react-table";
 import { User } from "lucide-react";
+import { motion } from "motion/react";
 
 async function fetchTodos() {
 	let { data, error } = await supabase.from("todos").select(`
@@ -112,6 +113,7 @@ export default function Admin() {
 				fontStyle: "normal",
 				fontSize: 14,
 				halign: "center",
+				valign: "middle",
 				textColor: [17, 24, 39],
 				lineColor: [17, 24, 39],
 				lineWidth: 0.3,
@@ -124,11 +126,35 @@ export default function Admin() {
 				fillColor: [239, 68, 68],
 				textColor: 255,
 				halign: "center",
+				valign: "middle",
 			},
 
 			bodyStyles: {
 				font: "Ubuntu",
 				fontStyle: "normal",
+				halign: "center",
+				valign: "middle",
+			},
+
+			columnStyles: {
+				0: {
+					cellWidth: 50,
+					overflow: "linebreak",
+					halign: "center",
+					valign: "middle",
+				},
+				1: {
+					cellWidth: 80,
+					overflow: "linebreak",
+					halign: "center",
+					valign: "middle",
+				},
+				2: {
+					cellWidth: 40,
+					overflow: "linebreak",
+					halign: "center",
+					valign: "middle",
+				},
 			},
 		});
 
@@ -161,9 +187,17 @@ export default function Admin() {
 			bg-[radial-gradient(ellipse_at_bottom,var(--color-gray-700),var(--color-gray-900),black)] 
 			flex flex-col items-center justify-center"
 		>
-			<span className="h-13 w-13 top-13 left-16 bg-amber-400 absolute rounded-4xl flex flex-col items-center justify-center">
+			<motion.span
+				whileHover={{
+					y: -2,
+					boxShadow: "0px 8px 20px rgba(251,191,36,0.4)",
+				}}
+				whileTap={{ scale: 0.94 }}
+				transition={{ type: "spring", stiffness: 280, damping: 18 }}
+				className="h-13 w-13 top-13 left-16 bg-amber-400 absolute rounded-4xl flex items-center justify-center"
+			>
 				<User className="w-7 h-7 text-gray-950" strokeWidth={2.5} />
-			</span>
+			</motion.span>
 			<p className="text-blue-50 text-xl absolute top-16 left-32">
 				Admin
 			</p>

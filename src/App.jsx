@@ -34,7 +34,7 @@ function App() {
 	return (
 		<div>
 			<Toaster position="top-center" reverseOrder={false} />
-			<Routes>
+			<Routes location={location} key={location.pathname}>
 				<Route
 					path="/"
 					element={

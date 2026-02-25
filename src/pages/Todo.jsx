@@ -7,6 +7,7 @@ import { supabase } from "../lib/supabaseClient";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { User } from "lucide-react";
+import { motion } from "motion/react";
 
 export default function Todo() {
 	let [todo, setTodo] = useState([]);
@@ -125,9 +126,17 @@ export default function Todo() {
 			bg-[radial-gradient(ellipse_at_bottom,var(--color-gray-700),var(--color-gray-900),black)] 
 			flex flex-col items-center justify-center"
 		>
-			<span className="h-13 w-13 top-13 left-16 bg-amber-400 absolute rounded-4xl flex flex-col items-center justify-center">
+			<motion.span
+				whileHover={{
+					y: -2,
+					boxShadow: "0px 8px 20px rgba(251,191,36,0.4)",
+				}}
+				whileTap={{ scale: 0.94 }}
+				transition={{ type: "spring", stiffness: 280, damping: 18 }}
+				className="h-13 w-13 top-13 left-16 bg-amber-400 absolute rounded-4xl flex items-center justify-center"
+			>
 				<User className="w-7 h-7 text-gray-950" strokeWidth={2.5} />
-			</span>
+			</motion.span>
 			<p className="text-blue-50 text-xl absolute top-16 left-32">
 				{username}
 			</p>

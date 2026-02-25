@@ -1,4 +1,5 @@
 import { SquarePlus } from "lucide-react";
+import { motion } from "motion/react";
 
 export default function TodoForm({ newTodo, updateTodoValue, addNewTask }) {
 	return (
@@ -12,11 +13,11 @@ export default function TodoForm({ newTodo, updateTodoValue, addNewTask }) {
 			/>
 			<br />
 			<button
-				className="font-bold text-blue-50 text-[18px] bg-blue-500 bg-center rounded-lg p-2 border-transparent transition delay-75 duration-150 ease-in-out hover:scale-110 hover:bg-blue-50 hover:text-blue-500
-                hover:shadow-blue-500/50 hover:shadow-lg w-35 h-12 cursor-pointer"
+				className="font-bold text-blue-50 text-[18px] bg-blue-500 bg-center rounded-lg p-2 border-transparent transition delay-75 duration-150 ease-in-out hover:scale-110 hover:bg-blue-50 hover:text-blue-500 hover:shadow-blue-500/50 hover:shadow-lg w-35 h-12 cursor-pointer"
 				onClick={addNewTask}
 			>
-				Add Task
+				{" "}
+				Add Task{" "}
 			</button>
 		</div>
 	);

@@ -9,7 +9,7 @@ export default function TodoForm({ newTodo, updateTodoValue, addNewTask }) {
 				placeholder="Enter new task"
 				value={newTodo}
 				onChange={updateTodoValue}
-				className="font-bold border-3 border-red-400 rounded-md h-12 w-50 bg-blue-50 text-center transition delay-75 duration-150 ease-in-out focus:scale-110 focus:text-blue-500 focus:outline-none"
+				className="font-bold border-3 border-rose-400 rounded-md h-12 w-50 bg-blue-50 text-center transition delay-75 duration-150 ease-in-out focus:scale-110 focus:text-blue-500 focus:outline-none"
 			/>
 			<br />
 			<button

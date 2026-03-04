@@ -1,4 +1,4 @@
-import { Check, CircleCheck, SquareCheck, Trash2 } from "lucide-react";
+import { Check, CircleCheck, Square, SquareCheck, Trash2 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 export default function TodoList({ todo, markAsDone, deleteTask }) {
@@ -16,17 +16,21 @@ export default function TodoList({ todo, markAsDone, deleteTask }) {
 							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true, amount: 0.2 }}
 							transition={{ duration: 0.3 }}
-							className="my-5 flex items-start w-full"
+							className="my-5 flex items-center w-full"
 						>
-							<span className="text-red-400 mr-4 text-2xl shrink-0">
-								■
+							<span className="text-rose-500 mr-4 shrink-0">
+								<Square
+									className="w-3 h-3"
+									fill="currentColor"
+									stroke="none"
+								/>
 							</span>
 							{todo.is_done ? (
 								<span className="mr-4 text-2xl line-through transition duration-500 ease-in-out opacity-65 flex-1 wrap-break-word w-100">
 									{todo.task}
 								</span>
 							) : (
-								<span className="mr-4 text-2xl transition duration-500 ease-in-out opacity-100 flex-1 wrap-break-word max-w-[calc(100%-175px)]">
+								<span className="mr-4 text-2xl transition duration-500 ease-in-out opacity-100 flex-1 wrap-break-word w-100">
 									{todo.task}
 								</span>
 							)}

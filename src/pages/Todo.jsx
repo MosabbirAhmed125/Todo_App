@@ -165,7 +165,7 @@ export default function Todo() {
 						alt="Todo Icon"
 						className="size-13 mx-3"
 					/>
-					<p className="text-red-400 text-5xl">Welcome!</p>
+					<p className="text-rose-500 text-5xl">Welcome!</p>
 				</div>
 				<br />
 				<br />

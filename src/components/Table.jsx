@@ -12,11 +12,41 @@ import { ChevronDown } from "lucide-react";
 export default function PracticeTable({ table }) {
 	const statuses = ["", "Done", "Pending"];
 	const statusValue = table.getColumn("status")?.getFilterValue() ?? "";
+
+	const rows = table.getRowModel().rows;
+
+	// ---- Container Animation ----
+	const containerVariants = {
+		hidden: { opacity: 0, y: 20 },
+		visible: {
+			opacity: 1,
+			y: 0,
+			transition: {
+				duration: 0.6,
+				when: "beforeChildren",
+				staggerChildren: 0.05,
+			},
+		},
+	};
+
+	const rowVariants = {
+		hidden: { opacity: 0, y: 10 },
+		visible: { opacity: 1, y: 0 },
+		exit: { opacity: 0, y: -10 },
+	};
+
 	return (
-		<div className="p-6 scale-125 flex flex-col items-center">
-			<br />
-			<div className="flex gap-4">
+		<motion.div
+			className="w-130 mx-auto pb-6 flex flex-col gap-6"
+			variants={containerVariants}
+			initial="hidden"
+			animate="visible"
+		>
+			{/* ================= PREMIUM CONTROLS ================= */}
+			<div className="w-full flex gap-4">
+				{/* Search */}
 				<motion.input
+					layout
 					type="text"
 					placeholder="Search by username..."
 					value={table.getColumn("username")?.getFilterValue() ?? ""}
@@ -25,15 +55,18 @@ export default function PracticeTable({ table }) {
 							.getColumn("username")
 							?.setFilterValue(e.target.value)
 					}
-					className="px-4 py-2 border-2 border-gray-100 text-gray-100 rounded w-69 focus:outline-none"
+					className="flex-1 px-4 py-3 border-2 border-sky-500/40 
+					text-sky-50 rounded-xl bg-gray-950
+					focus:outline-none placeholder:text-gray-400"
 					whileFocus={{
-						scale: 1.02,
-						boxShadow: "0 4px 12px rgba(59,130,246,0.2)",
-						borderColor: "#3b82f6",
+						scale: 1.01,
+						boxShadow: "0 0 0 2px rgba(56,189,248,0.4)",
 					}}
-					transition={{ type: "spring", stiffness: 300, damping: 20 }}
+					transition={{ type: "spring", stiffness: 300, damping: 25 }}
 				/>
-				<div className="relative w-32">
+
+				{/* Dropdown */}
+				<div className="relative w-60">
 					<Listbox
 						value={statusValue}
 						onChange={(val) =>
@@ -46,22 +79,14 @@ export default function PracticeTable({ table }) {
 							<div className="relative">
 								<ListboxButton as={Fragment}>
 									<motion.button
-										className={`
-										w-full px-4 py-2 border-2 rounded
-										text-gray-100 text-left
-										flex items-center justify-between
-										focus:outline-none
-										${open || statusValue ? "border-blue-500" : "border-gray-100"}
-										`}
+										layout
+										className={`w-full px-4 py-3 border-2 rounded-xl
+										text-sky-50 text-left flex items-center justify-between
+										bg-gray-950 focus:outline-none
+										${open || statusValue ? "border-sky-500" : "border-sky-500/40"}`}
 										whileFocus={{
-											scale: 1.02,
 											boxShadow:
-												"0 4px 12px rgba(59,130,246,0.2)",
-										}}
-										transition={{
-											type: "spring",
-											stiffness: 300,
-											damping: 20,
+												"0 0 0 2px rgba(56,189,248,0.4)",
 										}}
 									>
 										<span>
@@ -71,9 +96,8 @@ export default function PracticeTable({ table }) {
 										<motion.div
 											animate={{ rotate: open ? 180 : 0 }}
 											transition={{ duration: 0.2 }}
-											className="flex items-center"
 										>
-											<ChevronDown className="w-4 h-4 text-current" />
+											<ChevronDown className="w-4 h-4 text-sky-400" />
 										</motion.div>
 									</motion.button>
 								</ListboxButton>
@@ -85,12 +109,9 @@ export default function PracticeTable({ table }) {
 											initial={{ opacity: 0, y: -5 }}
 											animate={{ opacity: 1, y: 0 }}
 											exit={{ opacity: 0, y: -5 }}
-											transition={{ duration: 0.2 }}
-											className="
-											absolute mt-2 w-full z-50
-											bg-gray-900 border border-gray-700
-											rounded shadow-lg overflow-hidden
-											"
+											className="absolute mt-2 w-full z-50
+											bg-gray-900 border border-sky-500/40
+											rounded-xl shadow-xl overflow-hidden"
 										>
 											{statuses.map((status) => (
 												<ListboxOption
@@ -103,16 +124,14 @@ export default function PracticeTable({ table }) {
 															whileHover={{
 																scale: 1.02,
 															}}
-															className={`
-															cursor-pointer px-4 py-2 transition-colors
+															className={`cursor-pointer px-4 py-3 transition-colors
 															${
 																selected
-																	? "bg-blue-500/30 text-blue-400"
+																	? "bg-sky-500/30 text-sky-300"
 																	: active
-																		? "bg-blue-500/20 text-blue-400"
-																		: "text-gray-100"
-															}
-														`}
+																		? "bg-sky-500/20 text-sky-300"
+																		: "text-sky-100"
+															}`}
 														>
 															{status ||
 																"All Status"}
@@ -128,59 +147,96 @@ export default function PracticeTable({ table }) {
 					</Listbox>
 				</div>
 			</div>
-			<br />
-			<div className="overflow-y-auto h-78 px-3 scrollbar-custom bg-transparent">
-				<table className="min-w-full border-separate border-spacing-0.5 border border-gray-100 bg-transparent table-fixed">
-					<thead className="sticky top-0 z-20 bg-red-400 text-gray-900">
-						{table.getHeaderGroups().map((headerGroup) => (
-							<tr key={headerGroup.id}>
-								{headerGroup.headers.map((header) => (
-									<th
-										key={header.id}
-										className="border px-4 py-2 text-left border-gray-100 max-w-49 wrap-break-word"
+
+			{/* ================= PREMIUM TABLE ================= */}
+			<motion.div
+				layout
+				className="bg-transparent rounded-2xl border-2 border-sky-500/50
+				overflow-hidden drop-shadow-sky-500/50 drop-shadow-2xl"
+			>
+				<motion.div
+					layout
+					className="max-h-81 w-full overflow-y-auto overflow-x-hidden scrollbar-hide"
+				>
+					<table className="min-w-full text-sm text-sky-100 border-collapse table-fixed">
+						<thead className="bg-gray-900 sticky top-0 z-10">
+							{table.getHeaderGroups().map((headerGroup) => (
+								<tr
+									key={headerGroup.id}
+									className="border-b border-gray-800"
+								>
+									{headerGroup.headers.map(
+										(header, index) => (
+											<th
+												key={header.id}
+												className="relative px-6 py-4 text-left font-semibold text-sky-400"
+											>
+												{flexRender(
+													header.column.columnDef
+														.header,
+													header.getContext(),
+												)}
+
+												{index !==
+													headerGroup.headers.length -
+														1 && (
+													<span className="absolute right-0 top-3 bottom-3 w-0.5 bg-gray-400" />
+												)}
+											</th>
+										),
+									)}
+								</tr>
+							))}
+						</thead>
+
+						<motion.tbody layout>
+							<AnimatePresence mode="popLayout">
+								{rows.map((row) => (
+									<motion.tr
+										layout
+										key={row.id}
+										variants={rowVariants}
+										initial="hidden"
+										animate="visible"
+										exit="exit"
+										transition={{ duration: 0.3 }}
+										whileHover={{
+											scale: 1.01,
+											transition: { duration: 0.2 },
+										}}
+										className="border-b bg-gray-950 border-gray-900 hover:bg-gray-900/60"
 									>
-										{flexRender(
-											header.column.columnDef.header,
-											header.getContext(),
-										)}
-									</th>
+										{row
+											.getVisibleCells()
+											.map((cell, index) => (
+												<td
+													key={cell.id}
+													className="relative px-6 py-3 wrap-break-word align-top"
+												>
+													{flexRender(
+														cell.column.columnDef
+															.cell ??
+															cell.column
+																.columnDef
+																.accessorKey,
+														cell.getContext(),
+													)}
+
+													{index !==
+														row.getVisibleCells()
+															.length -
+															1 && (
+														<span className="absolute right-0 top-2 bottom-2 w-0.5 bg-gray-700/70" />
+													)}
+												</td>
+											))}
+									</motion.tr>
 								))}
-							</tr>
-						))}
-					</thead>
-					<tbody>
-						{table.getRowModel().rows.map((row) => (
-							<motion.tr
-								key={row.id}
-								className="bg-transparent text-gray-50"
-								whileHover={{
-									scale: 1.02,
-									backgroundColor: "rgba(59,130,246,0.1)",
-									boxShadow: "0px 6px 12px rgba(0,0,0,0.08)",
-								}}
-								initial={{ opacity: 0, y: 10 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: false, amount: 0.2 }}
-								transition={{ duration: 0.35, ease: "easeOut" }}
-							>
-								{row.getVisibleCells().map((cell) => (
-									<td
-										key={cell.id}
-										className="border px-4 py-2 border-gray-100 max-w-49 wrap-break-word"
-									>
-										{flexRender(
-											cell.column.columnDef.cell ??
-												cell.column.columnDef
-													.accessorKey,
-											cell.getContext(),
-										)}
-									</td>
-								))}
-							</motion.tr>
-						))}
-					</tbody>
-				</table>
-			</div>
-		</div>
+							</AnimatePresence>
+						</motion.tbody>
+					</table>
+				</motion.div>
+			</motion.div>
+		</motion.div>
 	);
 }

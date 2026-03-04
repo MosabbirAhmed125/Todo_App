@@ -58,7 +58,7 @@ export default function Signup() {
 						alt="Todo Icon"
 						className="size-13 mx-3"
 					/>
-					<p className="text-red-400 text-5xl">Signup</p>
+					<p className="text-rose-500 text-5xl">Signup</p>
 				</div>
 				<br />
 				<br />
@@ -73,7 +73,7 @@ export default function Signup() {
 							setUsername(event.target.value);
 						}}
 						required
-						className="font-bold border-3 border-red-400 rounded-md h-12 w-full bg-blue-50 text-left px-3 transition delay-75 duration-150 ease-in-out focus:text-blue-500 focus:outline-none"
+						className="font-bold border-3 border-rose-400 rounded-md h-12 w-full bg-blue-50 text-left px-3 transition delay-75 duration-150 ease-in-out focus:text-blue-500 focus:outline-none"
 					/>
 					<br />
 					<input
@@ -83,7 +83,7 @@ export default function Signup() {
 							setEmail(event.target.value);
 						}}
 						required
-						className="font-bold border-3 border-red-400 rounded-md h-12 w-full bg-blue-50 text-left px-3 transition delay-75 duration-150 ease-in-out focus:text-blue-500 focus:outline-none"
+						className="font-bold border-3 border-rose-400 rounded-md h-12 w-full bg-blue-50 text-left px-3 transition delay-75 duration-150 ease-in-out focus:text-blue-500 focus:outline-none"
 					/>
 					<br />
 					<div className="relative w-full">
@@ -93,7 +93,7 @@ export default function Signup() {
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 							required
-							className="font-bold border-3 border-red-400 rounded-md h-12 w-full bg-blue-50 text-left px-3 transition delay-75 duration-150 ease-in-out focus:text-blue-500 focus:outline-none pr-12"
+							className="font-bold border-3 border-rose-400 rounded-md h-12 w-full bg-blue-50 text-left px-3 transition delay-75 duration-150 ease-in-out focus:text-blue-500 focus:outline-none pr-12"
 						/>
 						<span
 							className="absolute right-11 top-1/2 transform -translate-y-1/2 bg-gray-400"

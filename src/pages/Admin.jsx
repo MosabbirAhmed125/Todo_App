@@ -11,7 +11,6 @@ import {
 	useReactTable,
 	getCoreRowModel,
 	getFilteredRowModel,
-	flexRender,
 } from "@tanstack/react-table";
 import { User } from "lucide-react";
 import { motion } from "motion/react";
@@ -63,12 +62,18 @@ export default function Admin() {
 				accessorKey: "username",
 				header: "Username",
 				filterFn: "includesString",
+				size: 120,
 			},
-			{ accessorKey: "task", header: "Task" },
+			{
+				accessorKey: "task",
+				header: "Task",
+				size: 300,
+			},
 			{
 				accessorKey: "status",
 				header: "Status",
 				filterFn: "equalsString",
+				size: 100,
 			},
 		],
 		[],
@@ -223,7 +228,7 @@ export default function Admin() {
 					alt="Todo Icon"
 					className="size-13 mx-3"
 				/>
-				<p className="text-red-400 text-5xl">Admin Panel</p>
+				<p className="text-rose-500 text-5xl">Admin Panel</p>
 			</div>
 			<br />
 			<br />

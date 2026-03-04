@@ -1,4 +1,4 @@
-import PracticeTable from "../components/Table";
+import Table from "../components/Table";
 import React, { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useNavigate } from "react-router-dom";
@@ -203,12 +203,12 @@ export default function Admin() {
 			>
 				<User className="w-7 h-7 text-gray-950" strokeWidth={2.5} />
 			</motion.span>
-			<p className="text-blue-50 text-xl absolute top-16 left-32">
+			<p className="text-pearl-bush-100 text-xl absolute top-16 left-32">
 				Admin
 			</p>
 			<button
 				onClick={handleLogout}
-				className="font-bold text-blue-50 text-[20px] bg-red-500 bg-center rounded-lg p-2 border-transparent transition delay-75 duration-150 ease-in-out hover:scale-110 hover:bg-blue-50 hover:text-red-500
+				className="font-bold text-pearl-bush-100 text-[20px] bg-red-500 bg-center rounded-lg p-2 border-transparent transition delay-75 duration-150 ease-in-out hover:scale-110 hover:bg-pearl-bush-100 hover:text-red-500
                 hover:shadow-red-500/50 hover:shadow-lg w-25 h-12 cursor-pointer absolute top-30 left-16"
 			>
 				Logout
@@ -217,7 +217,7 @@ export default function Admin() {
 				onClick={() => {
 					navigate("/todo");
 				}}
-				className="font-bold text-gray-950 text-[20px] bg-amber-400  bg-center rounded-lg p-2 border-transparent transition delay-75 duration-150 ease-in-out hover:scale-110 hover:bg-blue-50 hover:text-amber-400 
+				className="font-bold text-gray-950 text-[20px] bg-amber-400  bg-center rounded-lg p-2 border-transparent transition delay-75 duration-150 ease-in-out hover:scale-110 hover:bg-pearl-bush-100 hover:text-amber-400 
 					hover:shadow-amber-400/50 hover:shadow-lg w-25 h-12 cursor-pointer absolute top-47 left-16"
 			>
 				Todos
@@ -228,11 +228,11 @@ export default function Admin() {
 					alt="Todo Icon"
 					className="size-13 mx-3"
 				/>
-				<p className="text-rose-500 text-5xl">Admin Panel</p>
+				<p className="text-red-ribbon-500 text-5xl">Admin Panel</p>
 			</div>
 			<br />
 			<br />
-			<PracticeTable table={table}></PracticeTable>
+			<Table table={table}></Table>
 			<br />
 			<br />
 			<button

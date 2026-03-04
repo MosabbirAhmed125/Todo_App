@@ -6,7 +6,7 @@ import PracticeTable from "../components/Table";
 import { supabase } from "../lib/supabaseClient";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { User } from "lucide-react";
+import { ListTodo, User } from "lucide-react";
 import { motion } from "motion/react";
 
 export default function Todo() {
@@ -137,12 +137,12 @@ export default function Todo() {
 			>
 				<User className="w-7 h-7 text-gray-950" strokeWidth={2.5} />
 			</motion.span>
-			<p className="text-blue-50 text-xl absolute top-16 left-32">
+			<p className="text-pearl-bush-100 text-xl absolute top-16 left-32">
 				{username}
 			</p>
 			<button
 				onClick={handleLogout}
-				className="font-bold text-blue-50 text-[20px] bg-red-500 bg-center rounded-lg p-2 border-transparent transition delay-75 duration-150 ease-in-out hover:scale-110 hover:bg-blue-50 hover:text-red-500
+				className="font-bold text-pearl-bush-100 text-[20px] bg-red-500 bg-center rounded-lg p-2 border-transparent transition delay-75 duration-150 ease-in-out hover:scale-110 hover:bg-pearl-bush-100 hover:text-red-500
                 hover:shadow-red-500/50 hover:shadow-lg w-25 h-12 cursor-pointer absolute top-30 left-16"
 			>
 				Logout
@@ -152,7 +152,7 @@ export default function Todo() {
 					onClick={() => {
 						navigate("/admin");
 					}}
-					className="font-bold text-gray-950 text-[20px] bg-amber-400  bg-center rounded-lg p-2 border-transparent transition delay-75 duration-150 ease-in-out hover:scale-110 hover:bg-blue-50 hover:text-amber-400 
+					className="font-bold text-gray-950 text-[20px] bg-amber-400  bg-center rounded-lg p-2 border-transparent transition delay-75 duration-150 ease-in-out hover:scale-110 hover:bg-pearl-bush-100 hover:text-amber-400 
 					hover:shadow-amber-400/50 hover:shadow-lg w-38 h-12 cursor-pointer absolute top-47 left-16"
 				>
 					Admin Panel
@@ -165,7 +165,7 @@ export default function Todo() {
 						alt="Todo Icon"
 						className="size-13 mx-3"
 					/>
-					<p className="text-rose-500 text-5xl">Welcome!</p>
+					<p className="text-red-ribbon-500 text-5xl">Welcome!</p>
 				</div>
 				<br />
 				<br />
@@ -175,9 +175,12 @@ export default function Todo() {
 					addNewTask={addNewTask}
 				></TodoForm>
 				<br />
-				<hr className="w-150 h-1.5 mx-auto my-4 bg-blue-50" />
+				<hr className="w-150 h-1.5 mx-auto my-4 bg-pearl-bush-100" />
 				<br />
-				<p className="text-blue-500 text-3xl">Todo List</p>
+				<span className="flex items-center">
+					<ListTodo className="text-pearl-bush-200 w-15 h-15 pr-2"></ListTodo>
+					<p className="text-blue-500 text-3xl">Todo List</p>
+				</span>
 				<br />
 				<TodoList
 					todo={todo}

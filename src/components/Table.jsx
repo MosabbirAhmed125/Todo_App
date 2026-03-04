@@ -9,7 +9,7 @@ import {
 } from "@headlessui/react";
 import { ChevronDown } from "lucide-react";
 
-export default function PracticeTable({ table }) {
+export default function Table({ table }) {
 	const statuses = ["", "Done", "Pending"];
 	const statusValue = table.getColumn("status")?.getFilterValue() ?? "";
 
@@ -56,7 +56,7 @@ export default function PracticeTable({ table }) {
 							?.setFilterValue(e.target.value)
 					}
 					className="flex-1 px-4 py-3 border-2 border-sky-500/40 
-					text-sky-50 rounded-xl bg-gray-950
+					text-pearl-bush-100 rounded-xl bg-gray-950
 					focus:outline-none placeholder:text-gray-400"
 					whileFocus={{
 						scale: 1.01,
@@ -81,7 +81,7 @@ export default function PracticeTable({ table }) {
 									<motion.button
 										layout
 										className={`w-full px-4 py-3 border-2 rounded-xl
-										text-sky-50 text-left flex items-center justify-between
+										text-pearl-bush-100 text-left flex items-center justify-between
 										bg-gray-950 focus:outline-none
 										${open || statusValue ? "border-sky-500" : "border-sky-500/40"}`}
 										whileFocus={{
@@ -130,7 +130,7 @@ export default function PracticeTable({ table }) {
 																	? "bg-sky-500/30 text-sky-300"
 																	: active
 																		? "bg-sky-500/20 text-sky-300"
-																		: "text-sky-100"
+																		: "text-pearl-bush-100"
 															}`}
 														>
 															{status ||
@@ -158,7 +158,7 @@ export default function PracticeTable({ table }) {
 					layout
 					className="max-h-81 w-full overflow-y-auto overflow-x-hidden scrollbar-hide"
 				>
-					<table className="min-w-full text-sm text-sky-100 border-collapse table-fixed">
+					<table className="min-w-full text-sm text-pearl-bush-50 border-collapse table-fixed">
 						<thead className="bg-gray-900 sticky top-0 z-10">
 							{table.getHeaderGroups().map((headerGroup) => (
 								<tr

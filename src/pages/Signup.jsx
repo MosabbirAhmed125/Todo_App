@@ -58,7 +58,7 @@ export default function Signup() {
 						alt="Todo Icon"
 						className="size-13 mx-3"
 					/>
-					<p className="text-rose-500 text-5xl">Signup</p>
+					<p className="text-red-ribbon-500 text-5xl">Signup</p>
 				</div>
 				<br />
 				<br />
@@ -73,7 +73,7 @@ export default function Signup() {
 							setUsername(event.target.value);
 						}}
 						required
-						className="font-bold border-3 border-rose-400 rounded-md h-12 w-full bg-blue-50 text-left px-3 transition delay-75 duration-150 ease-in-out focus:text-blue-500 focus:outline-none"
+						className="font-bold border-3 border-red-ribbon-500 rounded-md h-12 w-full bg-pearl-bush-100 text-left px-3 transition delay-75 duration-150 ease-in-out focus:text-blue-500 focus:outline-none"
 					/>
 					<br />
 					<input
@@ -83,7 +83,7 @@ export default function Signup() {
 							setEmail(event.target.value);
 						}}
 						required
-						className="font-bold border-3 border-rose-400 rounded-md h-12 w-full bg-blue-50 text-left px-3 transition delay-75 duration-150 ease-in-out focus:text-blue-500 focus:outline-none"
+						className="font-bold border-3 border-red-ribbon-500 rounded-md h-12 w-full bg-pearl-bush-100 text-left px-3 transition delay-75 duration-150 ease-in-out focus:text-blue-500 focus:outline-none"
 					/>
 					<br />
 					<div className="relative w-full">
@@ -93,7 +93,7 @@ export default function Signup() {
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 							required
-							className="font-bold border-3 border-rose-400 rounded-md h-12 w-full bg-blue-50 text-left px-3 transition delay-75 duration-150 ease-in-out focus:text-blue-500 focus:outline-none pr-12"
+							className="font-bold border-3 border-red-ribbon-500 rounded-md h-12 w-full bg-pearl-bush-100 text-left px-3 transition delay-75 duration-150 ease-in-out focus:text-blue-500 focus:outline-none pr-12"
 						/>
 						<span
 							className="absolute right-11 top-1/2 transform -translate-y-1/2 bg-gray-400"
@@ -119,19 +119,19 @@ export default function Signup() {
 					</div>
 					<br />
 					<button
-						className="font-bold text-blue-50 text-[18px] bg-blue-500 bg-center rounded-lg p-2 border-transparent transition delay-75 duration-150 ease-in-out hover:scale-110 hover:bg-blue-50 hover:text-blue-500
+						className="font-bold text-pearl-bush-100 text-[18px] bg-blue-500 bg-center rounded-lg p-2 border-transparent transition delay-75 duration-150 ease-in-out hover:scale-110 hover:bg-pearl-bush-100 hover:text-blue-500
                 hover:shadow-blue-500/50 hover:shadow-lg w-45 h-12 cursor-pointer"
 					>
 						Create Account
 					</button>
 				</form>
 				<br />
-				<p className="text-blue-50 text-lg my-3">
+				<p className="text-pearl-bush-100 text-lg my-3">
 					Already have an account?
 				</p>
 				<button
 					onClick={() => navigate("/")}
-					className="font-bold text-green-50 text-[18px] bg-green-500 bg-center rounded-lg p-2 border-transparent transition delay-75 duration-150 ease-in-out hover:scale-110 hover:bg-green-50 hover:text-green-500
+					className="font-bold text-pearl-bush-100 text-[18px] bg-green-500 bg-center rounded-lg p-2 border-transparent transition delay-75 duration-150 ease-in-out hover:scale-110 hover:bg-pearl-bush-100 hover:text-green-500
 				hover:shadow-green-500/50 hover:shadow-lg w-30 h-12 cursor-pointer"
 				>
 					Login
